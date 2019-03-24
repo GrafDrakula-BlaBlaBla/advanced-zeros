@@ -1,4 +1,39 @@
-// function getZerosCount(number, base) {
+module.exports = function getZerosCount(number, base) {
+  const arrSum= [];
+  let copyBase = base; //12
+  let factor = 2;
+  let countPow = 0;
+  let sum = 0;
+// Разложение на простые множетели
+
+// debugger
+  do {
+    if (copyBase % factor === 0) {
+      copyBase /= factor; //6
+      countPow++;
+
+      if(Math.floor(number / Math.pow(factor, countPow)) >= 1){
+        sum += Math.floor(number / Math.pow(factor, countPow));  
+      }
+      // arrValue.push(factor);
+      } else if(sum === 0){
+        factor++;
+        // countPow = 0;
+        // sum = 0;
+      } else {
+        arrSum.push(sum / countPow);
+        factor++;
+        countPow = 0;
+        sum = 0;
+      }
+  } while (copyBase >= factor);
+
+  arrSum.push(sum);
+
+  return Math.min(...arrSum);
+} 
+
+//function getZerosCount(number, base) {
 //   const arrValue = [];
 //   let copyBase = base;
 //   let factor = 2;
@@ -36,8 +71,6 @@
 // }
 // getZerosCount(5,12);
 
-
-
 // 1) Разложить число B системы счисления на простые множители.
 
 // 2) Разделить число N на каждый уникальной простой множитель K, домножая K сам на себя до тех пор, пока 
@@ -47,41 +80,6 @@
 
 // 4) Из всех делений N на каждый уникальный множитель K выбрать наименьшее частное, которое и будет нашим ответом.
 
-
-module.exports = function getZerosCount(number, base) {
-  const arrSum= [];
-  let copyBase = base; //12
-  let factor = 2;
-  let countPow = 0;
-  let sum = 0;
-// Разложение на простые множетели
-
-// debugger
-  do {
-    if (copyBase % factor === 0) {
-      copyBase /= factor; //6
-      countPow++;
-
-      if(Math.floor(number / Math.pow(factor, countPow)) >= 1){
-        sum += Math.floor(number / Math.pow(factor, countPow));  
-      }
-      // arrValue.push(factor);
-      } else if(sum === 0){
-        factor++;
-        // countPow = 0;
-        // sum = 0;
-      } else {
-        arrSum.push(sum / countPow);
-        factor++;
-        countPow = 0;
-        sum = 0;
-      }
-  } while (copyBase >= factor);
-
-  arrSum.push(sum);
-
-  return Math.min(...arrSum);
-}
 
 // getZerosCount(46899647, 232);
 //1674985
@@ -119,13 +117,9 @@ module.exports = function getZerosCount(number, base) {
 // Sum2 = (2 + 1) = 3/2 = 1,5 = 1
 // Sum3 = 1(1) = 1/1 = 1
 
-
-
 // Zeros = 6/1 = 6
-
   
 // getZerosCount(5,12);
-
 
 // return countZeros;
 
@@ -133,7 +127,6 @@ module.exports = function getZerosCount(number, base) {
 // let sumfive = 0;
 // let two=2;
 // let five = 5 ;
-
 
 // if(countTwo !== 0){
 //   while(number/two >= 1){
@@ -180,21 +173,6 @@ module.exports = function getZerosCount(number, base) {
 // -=-=-=-=-=- -=-=-=-=-= -=-=-=-=-=- -=-=-=-=-=- -=-=-=-=-=- -=-=-=-=-=-
 // -=-=-=-=-=- -=-=-=-=-= -=-=-=-=-=- -=-=-=-=-=- -=-=-=-=-=- -=-=-=-=-=-
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // let copyBase = base;
   // let sqrt = Math.sqrt(copyBase);
   // let mn = 2;
@@ -214,8 +192,6 @@ module.exports = function getZerosCount(number, base) {
   //     mn += 2;
   //   }
   // }
-
-  
 
   // // console.log(mn);
 
